@@ -1,6 +1,6 @@
 {
   "name": "fosify-less",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A plugin for Fosify to work with Less",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
   "homepage": "https://github.com/zkochan/fosify-less",
   "dependencies": {
     "async": "^1.2.1",
-    "fosify-util": "0.0.2",
+    "fosify-util": "0.0.3",
     "gaze": "^0.5.1",
     "glob": "^5.0.10",
     "less": "^2.5.1"
