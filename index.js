@@ -7,6 +7,7 @@ var fs = require('fs');
 var async = require('async');
 var gaze = require('gaze');
 var futil = require('fosify-util');
+var CleanCSS = require('clean-css');
 
 function rebundle(opts, cb) {
   cb = cb || futil.noop;
@@ -18,7 +19,8 @@ function rebundle(opts, cb) {
     extension: 'css'
   });
 
-  glob(src + '{/*/**/bundle,/**/*.bundle}.less', { ignore: opts.ignore }, function(err, files) {
+  var pattern = src + '{/*/**/bundle,/**/*.bundle}.less';
+  glob(pattern, { ignore: opts.ignore }, function(err, files) {
     async.eachSeries(files, function(filePath, cb) {
       var str = fs.readFileSync(filePath, {
         encoding: 'utf8'
@@ -34,8 +36,14 @@ function rebundle(opts, cb) {
         }
         var bundleName = createPath(filePath);
         var dest = path.join(opts.dest, bundleName);
+        var css;
+        if (opts.minify) {
+          css = new CleanCSS().minify(result.css).styles;
+        } else {
+          css = result.css;
+        }
 
-        futil.saveFile(dest, result.css);
+        futil.saveFile(dest, css);
         futil.log.bundled(bundleName);
         cb();
       });
