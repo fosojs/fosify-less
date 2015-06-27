@@ -6,7 +6,8 @@ var path = require('path');
 var fs = require('fs');
 var async = require('async');
 var gaze = require('gaze');
-var futil = require('fosify-util');
+var futil = require('fosify');
+var pkg = require('./package.json');
 var CleanCSS = require('clean-css');
 
 function rebundle(opts, cb) {
@@ -52,6 +53,8 @@ function rebundle(opts, cb) {
 }
 
 function bundle(opts, cb) {
+  futil.notifyUpdate(pkg);
+
   rebundle(opts, function() {
     if (opts.watch) {
       gaze(opts.src + '/**/*.less', function(err, watcher) {

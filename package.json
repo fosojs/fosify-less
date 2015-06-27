@@ -1,14 +1,16 @@
 {
   "name": "fosify-less",
-  "version": "0.1.0",
-  "description": "A plugin for Fosify to work with Less",
+  "version": "0.1.1",
+  "description": "A plugin for foso to bundle Less files",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/**/*.js",
+    "postinstall": "register",
+    "preuninstall": "unregister"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zkochan/fosify-less.git"
+    "url": "https://github.com/fosojs/fosify-less.git"
   },
   "author": {
     "name": "Zoltan Kochan",
@@ -17,16 +19,20 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zkochan/fosify-less/issues"
+    "url": "https://github.com/fosojs/fosify-less/issues"
   },
-  "homepage": "https://github.com/zkochan/fosify-less",
+  "homepage": "https://github.com/fosojs/fosify-less",
   "dependencies": {
     "async": "^1.2.1",
     "clean-css": "^3.3.3",
-    "fosify-util": "0.0.3",
+    "fosify": "^0.4.4",
     "gaze": "^0.5.1",
     "glob": "^5.0.10",
     "less": "^2.5.1"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "mocha": "^2.2.5"
   },
   "publishConfig": {
     "registry": "http://registry.npmjs.org"

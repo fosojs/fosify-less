@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fosify": "^0.4.2"
+    "foso": "*"
   }
 }
