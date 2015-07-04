@@ -1,6 +1,6 @@
 {
   "name": "fosify-less",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A plugin for foso to bundle Less files",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   "dependencies": {
     "async": "^1.2.1",
     "clean-css": "^3.3.3",
-    "fosify": "^0.4.4",
+    "fosify": "^0.4.9",
     "gaze": "^0.5.1",
     "glob": "^5.0.10",
     "less": "^2.5.1"
