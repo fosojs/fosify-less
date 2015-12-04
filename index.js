@@ -52,21 +52,27 @@ function rebundle(opts, cb) {
   });
 }
 
-function bundle(opts, cb) {
+module.exports = function(plugin, opts, next) {
   futil.notifyUpdate(pkg);
 
-  rebundle(opts, function() {
-    if (opts.watch) {
+  plugin.expose('bundle', function(cb) {
+    cb = cb || function() {};
+    rebundle(opts, function() {
+      cb();
+      if (!opts.watch) {
+        return;
+      }
       gaze(opts.src + '/**/*.less', function(err, watcher) {
-        watcher.on('all', function() {
-          rebundle(opts);
-        });
+        watcher.on('all', () => rebundle(opts));
       });
-    }
-
-    cb();
+    });
   });
-}
 
-module.exports = bundle;
-module.exports.extensions = ['css'];
+  plugin.root.extensions.push('css');
+
+  next();
+};
+
+module.exports.attributes = {
+  pkg: pkg
+};

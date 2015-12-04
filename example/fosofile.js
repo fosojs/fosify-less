@@ -1,12 +1,12 @@
 'use strict';
 
-var foso = require('foso');
+var Foso = require('foso');
 var less = require('../');
 
+var foso = new Foso();
 foso
-  .please({
+  .register(less, {
     src: './styles',
     minify: true
   })
-  .fosify(less)
-  .now();
+  .then(() => foso.bundle());
