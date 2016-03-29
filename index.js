@@ -33,7 +33,10 @@ function rebundle(opts, cb) {
       less.render(str, lessOpts, function(err, result) {
         if (err) {
           console.log(err);
-          return;
+          if (!opts.watch) {
+            process.exit(1);
+          }
+          return cb();
         }
         var bundleName = createPath(filePath);
         var dest = path.join(opts.dest, bundleName);
