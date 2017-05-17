@@ -1,5 +1,7 @@
 # fosify-less
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/fosojs/fosify-less.svg)](https://greenkeeper.io/)
+
 A plugin for foso to bundle Less files
 
 [![Dependency Status](https://david-dm.org/fosojs/fosify-less/status.svg?style=flat)](https://david-dm.org/fosojs/fosify-less)
